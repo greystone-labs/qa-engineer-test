@@ -1,6 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from database.db import create_tables
 from routers import routers
 
 app = FastAPI(
@@ -20,4 +21,5 @@ app.add_middleware(
 
 # Run the API
 if __name__ == "__main__":
+    create_tables()
     uvicorn.run("main:app", host="0.0.0.0", port=8000)
